@@ -1,15 +1,32 @@
 import { requireAuth } from './guards.js'
 import { clearSession } from './session.js'
+import { getOrders, getUsers } from './api.js'
 
 requireAuth('admin')
 
+const list = document.getElementById('orders')
+
 document.getElementById('logout').addEventListener('click', () => {
   clearSession()
-  window.location.href = 'index.html'
+  location.href = 'index.html'
 })
 
-window.addEventListener('pageshow', (event) => {
-  if (event.persisted) {
-    window.location.reload()
-  }
-})
+async function render() {
+  const orders = await getOrders()
+  const users = await getUsers()
+
+  list.innerHTML = ''
+
+  orders.forEach(o => {
+    const user = users.find(u => u.id === o.userId)
+
+    list.innerHTML += `
+      <li>
+        ${o.product} - ${o.status} 
+        (usuario: ${user.email})
+      </li>
+    `
+  })
+}
+
+render()

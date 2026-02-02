@@ -1,11 +1,30 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "admin@mail.com",
       "password": "1234",
       "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "user@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "6060",
+      "product": "tromatessss",
+      "status": "pendiente",
+      "userId": "2"
+    },
+    {
+      "id": "fb84",
+      "product": "sopa",
+      "status": "pendiente",
+      "userId": "2"
+    }
+  ]
 }

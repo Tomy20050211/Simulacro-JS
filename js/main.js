@@ -31,5 +31,24 @@ dom.btnRegister.addEventListener('click', async () => {
     dom.regPassword.value
   )
 
-  alert('Usuario registrado')
+document.body.insertAdjacentHTML('beforeend', `
+    <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div class="bg-white rounded-xl shadow-xl w-[90%] max-w-md p-6 text-center">
+        
+        <div class="text-green-500 text-5xl mb-4">✅</div>
+
+        <h2 class="text-2xl font-bold mb-2">¡Usuario creado!</h2>
+        <p class="text-gray-600 mb-6">
+          El usuario se creó exitosamente.
+        </p>
+
+        <button 
+          onclick="this.closest('.fixed').remove()"
+          class="w-full bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition"
+        >
+          Aceptar
+        </button>
+      </div>
+    </div>
+  `)
 })
